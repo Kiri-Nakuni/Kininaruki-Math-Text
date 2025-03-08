@@ -1,0 +1,253 @@
+%%このクラスファイルは製作者の出身高校の部活動のために作成されたものの改変です.
+%%このバージョンはまったり数学部屋での利用を目的としています
+%%また,非常にコメントアウトが多いですが,これは初心者が見ても理解自体はできることを企図しています.
+%%
+\NeedsTeXFormat{LaTeX2e}
+%\NeedsTeXFormatは使える条件のようなものです.
+%今回はLaTeX2eとありますが,ほかにもpLaTeX2eなどが指定されている場合もあります.
+\ProvidesClass{kininaruki}[2025/03/08,version0.1,made by Nakuni_Kiri]
+%バージョン宣言です.ちなみにこのスタイルファイルではバージョンが上がるにつれてリヴヴィルの定数に漸近するようになっています.
+\newif\if@default
+\newif\if@hyperref
+\DeclareOption{hyperref}{\@hyperreftrue}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+%ここでは,オプションを定義しています.
+%ただし,このパッケージでは,articleというクラスを内部的に呼び出しているという構造です.
+%ゆえに,ここでは未定義オプションが渡されたらそれをarticleクラスに渡すという構造をしています.
+\ProcessOptions\relax
+%LaTeXでは,オプションが「処理」されるためにはこの\ProcessOptions\relaxというコマンドを入れる必要があります.
+\LoadClass{article}
+%articleを呼び出しています.万一文字サイズを変更したくなったらここの12ptを適宜変更してください.
+\RequirePackage{iftex}%利用しているエンジンを判定するパッケージです.
+\RequirePackage{etoolbox}%すでにある命令の定義を部分的に変更するパッケージです.
+\RequirePackage{bxokumacro}%奥村先生作成のパッケージの他エンジン対応版です.
+%iftexパッケージを呼び出しています.
+%組版処理関連パッケージ
+\ifluatex
+    %luaTeXで利用している場合の処理です.
+    \RequirePackage[no-math,deluxe,expert]{luatexja-preset}%LuaLaTeX向けの日本語設定です.
+\fi
+\ifxetex
+    %XeTeXで利用している場合の処理です.
+    \RequirePackage[BoldFont]{xeCJK}%CJK文字(ひらがな,漢字など)を処理するものです.
+    \RequirePackage{zxjatype,fontspec}%日本語組版処理をするものです.
+\fi
+\ifpdftex
+    %pdfTeXで利用している場合の処理です.
+    \RequirePackage[whole]{bxcjkjatype}
+\fi
+\RequirePackage[explicit]{titlesec}%sectionなどの形式を変更するものです.
+\RequirePackage{etoc}%小目次などをつくるためのものです.
+\RequirePackage{enumitem}%リスト環境を制御するものです.
+\RequirePackage{indentfirst}%最初の段落で必ずインデントをあけるものです.
+\RequirePackage{multicol}%多段組(1ページに複数列の文章があるような組版)を可能にするものです.
+\RequirePackage{bm}%太字の斜体を使えるようにするものです.
+\RequirePackage{ulem}%下線とか引けるようにするものです.
+\RequirePackage{wrapfig}%文字を図に回り込ませるものです.
+\RequirePackage{titlepic}%タイトルに画像を挿入するものです.
+%ちなみにdefaultオプションを有効にしない限り無用の長物です.
+
+%graphicxは図を拡大,縮小,挿入などするもので,xcolorは色を処理するものです.
+%技術的に細かい話になりますが,これらのパッケージではドライバ指定というものがレガシーTeX
+%(今回は日本語組版が事実上の前提ですから,pTeXあるいはupTeXと考えても差し支えありません.)
+%では必要となります.(逆に,XeTeXやLuaTeXなどのモダンTeXでは必要がないということです.)
+%ICCではXeTeXを用いるように指導していますから,本来は必要がない処理ですが,念のためにしています.
+\ifluatex
+    \RequirePackage{graphicx}
+    \RequirePackage[dvipsnames]{xcolor}
+\else
+    \ifxetex
+        \RequirePackage{graphicx}
+        \RequirePackage[dvipsnames]{xcolor}
+    \else
+        \ifpdftex
+            \RequirePackage{graphicx}
+            \RequirePackage[dvipsnames]{xcolor}
+        \else
+            \RequirePackage[dvipdfmx]{graphicx}
+            \RequirePackage[dvipdfmx,dvipsnames]{xcolor}
+        \fi
+    \fi
+\fi
+\RequirePackage{tikz}%図などを作成するパッケージです.
+\RequirePackage{fancybox}%影付きの枠などを作成するパッケージです.
+\RequirePackage{framed}%改ページしても問題ない枠を作成するパッケージです.
+\RequirePackage{tcolorbox}%そのほか,かなり拡張性の高い枠を作成するパッケージです.
+\RequirePackage[top=25.4truemm,bottom=25.4truemm,left=19.05truemm,right=19.05truemm]{geometry}
+%ページの構造などを規定するパッケージです.
+%プログラム関連パッケージ
+\RequirePackage{ifthen}%容易にif文を書くことができるようにするパッケージです.
+\RequirePackage{globalvals}%グローバル変数(のようなもの)を利用できるようにするパッケージです.
+\RequirePackage{noconflict}%互いに異なるパッケージでコマンド名が被った際にリネームすることで干渉を直すパッケージです.
+%記号や分野別環境追加パッケージ
+
+%基本環境,記号追加パッケージ
+\RequirePackage{metalogo}%いくつかのロゴを追加するパッケージです.
+\RequirePackage{latexsym}%いくつかの数学記号を追加するパッケージです.
+\RequirePackage{siunitx}%SI単位に関する処理を追加するパッケージです.
+
+%数学分野
+\RequirePackage{amsfonts,ascmac,amsmath,amssymb,amscd,amsthm}%AMS(アメリカ数学会)が作成したパッケージ群です.
+%歴史的事情からこれらはある種のデファクトスタンダードだったりします.
+\RequirePackage{mathtools}%数式の表示に関する処理に便利な機能を追加するパッケージです.
+%数学での利用を想定したパッケージですが,化学式の表示にも便利です(番号を振りたい式にだけ番号を振る,というような利用ができます.)
+
+%物理分野
+\RequirePackage{physics2}%物理向けのパッケージですが,微分方程式などの表現に際して非常に強力なパッケージです.
+\RequirePackage{circuitikz}%回路図を描くためのパッケージです.
+
+%化学分野
+\RequirePackage[version=4]{mhchem}%化学式を簡単に書けるようにするものです.
+\RequirePackage{xymtex}%構造式を比較的簡単に描けるやつ.後述のchemfigよりも簡便な構文で描画することができます.
+\RequirePackage{chemfig}%構造式を自由に描くためのパッケージです.些か難易度が高いですが,シクロアワオドリンの様な複雑な分子でも描画することができます.
+\ifxetex
+  \save{xe}{Gamma,Delta,Theta,Lambda,Xi,Pi,Sigma,Upsilon,Phi,Psi,Omega}
+  \save{}{Gamma,Delta,Theta,Lambda,Xi,Pi,Sigma,Upsilon,Phi,Psi,Omega}%xeCJKとXyMTeXのコマンド名被りを解決しています.
+\fi
+\usetikzlibrary{intersections, calc, arrows.meta,angles,quotes,math}%TikZで呼び出す機能です.
+\usephysicsmodule{ab,braket,xmat}%physics2で呼び出す機能です.
+\newcommand{\TeXfont}[1]{{\usefont{T1}{cmr}{m}{n} #1}}
+%Computer Modern(TeXのデフォルトフォント)を強制するコマンドです
+\newcommand{\blackcircle}{\tikz \filldraw circle (0.38em);}%黒丸を描くやつ
+\newcommand{\emptyline}{\vskip\baselineskip}%空白行いれるやつ
+\newcommand{\@mI}{\hspace{-0.1em}I}%
+%以下,ローマ数字を追加しています.
+\newcommand{\one}{\TeXfont{I}}
+\newcommand{\two}{\TeXfont{I\@mI}}
+\newcommand{\three}{\TeXfont{I\@mI\@mI}}
+\newcommand{\four}{\TeXfont{I\hspace{-0.1em}V}}
+\newcommand{\five}{\TeXfont{V}}
+\newcommand{\six}{\TeXfont{V\@mI}}
+\newcommand{\seven}{\TeXfont{V\@mI\@mI}}
+\newcommand{\eight}{\TeXfont{V\@mI\@mI\@mI}}
+\newcommand{\nine}{\TeXfont{I\hspace{-0.1em}X}}
+\newcommand{\ten}{\TeXfont{X}}
+\newcommand{\eleven}{\TeXfont{X\@mI}}
+\newcommand{\twelve}{\TeXfont{X\@mI\@mI}}
+\newcommand{\wordef}[3]{%
+    \hyperlink{#1}{\ruby{{\textcolor{blue}{#2}}}{#3}}
+}
+\newcommand{\wordeff}[2]{%
+    {\ruby{{\textcolor{blue}{#1}}}{#2}}
+}
+\newcommand{\setjapanesemainfont}[1]{%
+    \ifxetex
+        \setCJKmainfont{#1}
+    \else
+        \ifluatex
+            \setmainjfont{#1}
+        \fi
+    \fi
+}
+\newcommand{\setjapanesesansfont}[1]{%
+    \ifxetex
+        \setCJKsansfont{#1}
+    \else
+        \ifluatex
+            \setsansjfont{#1}
+        \fi
+    \fi
+}
+\newcommand{\setalphabetmainfont}[1]{%
+    \ifxetex
+        \setmainfont{#1}
+    \else
+        \ifluatex
+            \setmainfont{#1}
+        \fi
+    \fi
+}
+\newcommand{\setalphabetsansfont}[1]{%
+    \ifxetex
+        \setsansfont{#1}
+    \else
+        \ifluatex
+            \setsansfont{#1}
+        \fi
+    \fi
+}
+\newcommand{\theTeX}{
+    \ifptex
+        \pTeX
+    \else
+        \ifuptex
+            \upTeX
+        \else
+            \ifxetex
+                \XeTeX
+            \else
+                \ifluatex
+                    \LuaTeX
+                \else
+                    \TeX
+                \fi
+            \fi
+        \fi
+    \fi
+}
+\newcommand{\theLaTeX}{%
+    \ifptex
+        \pLaTeX
+    \else
+        \ifuptex
+            \upLaTeX
+        \else
+            \ifxetex
+                \XeLaTeX
+            \else
+                \ifluatex
+                    \LuaLaTeX
+                \else
+                        \LaTeX
+                \fi
+            \fi
+        \fi
+    \fi
+}
+\allowdisplaybreaks[1]%式の途中での改ページを許容するものです.
+\if@hyperref
+    \ifXeTeX
+        \RequirePackage[xetex]{hyperref}
+    \else
+        \ifLuaTeX
+            \RequirePackage[luatex,pdfencoding=auto]{hyperref}
+        \else
+            \ifpdftex
+                \RequirePackage{hyperref}
+            \else
+                \ifupTeX
+                    \usepackage[%
+                        dvipdfmx,%
+                        setpagesize=false,%
+                        bookmarks=true,%
+                        bookmarksdepth=tocdepth,%
+                        bookmarksnumbered=true,%
+                        colorlinks=false,%
+                        pdftitle={},%
+                        pdfsubject={},%
+                        pdfauthor={},%
+                        pdfkeywords={}%
+                    ]{hyperref}
+                \usepackage{pxjahyper}
+                \else
+                \ifpTeX
+                    \usepackage[%
+                        dvipdfmx,%
+                        setpagesize=false,%
+                        bookmarks=true,%
+                        bookmarksdepth=tocdepth,%
+                        bookmarksnumbered=true,%
+                        colorlinks=false,%
+                        pdftitle={},%
+                        pdfsubject={},%
+                        pdfauthor={},%
+                        pdfkeywords={}%
+                    ]{hyperref}
+                    \usepackage{pxjahyper}
+                \fi
+            \fi
+        \fi
+    \fi
+\fi
+\newcommand{\setfonts}{\setalphabetmainfont{Segoe UI}\setalphabetsansfont{Arial Black}%
+\setjapanesemainfont{IPAMincho}\setjapanesesansfont{MS Gothic}}

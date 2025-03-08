@@ -1,0 +1,282 @@
+\documentclass[hyperref,a4paper,12pt]{kininaruki}
+\setfonts
+\usepackage{makeidx}
+\title{木による数学基礎}
+\author{新木参加木\thanks{睡魔氏,那国霧と同一人物}}
+\date{}
+\makeindex
+\renewcommand{\indexname}{索引}
+\begin{document}
+\maketitle
+\section*{はじめに}
+このpdfの目的は,\, まったり数学部屋のメンバーの内,\, まだ数学に余り明るくない人たちが,\, 数学の基礎的な概念に触れる際に
+その\ruby{道標}{みちしるべ}となることである.ゆえに,\, すでに知っている内容がある読者も存在すると思う.
+その時は\ruby{気兼}{きが}ねなくその部分を読み飛ばして欲しい.
+
+また,\, \ruby{形式}{けいしき}的には最初に\ruby{素朴}{そぼく}集合論,\, および数の素朴集合論に基づく構成を解説
+\footnote{この項は本来的に不完全である.%
+というのも数学的な概念であり,\, かつまだ定義していない概念を説明に用いているからである.%
+\,この点に於いて,\, Bourbakiの仕事は%
+実に偉大なものであったと再確認したのは編集中の感想である.}しているが,\, 
+たいていの読者には\ruby{難解}{なんかい}なものとなるとも思うため%
+,\, 自信がなければ先に自分の目的とする項目を読んでほしいと思う.
+\newpage
+\tableofcontents
+\newpage
+\part{数学に触れる上の前提}
+\section{命題論理}
+\subsection{公理,推論,証明}
+数学とは,\, ほとんどの場合ある\wordef{axiom}{公理}{こうり}と呼ばれるものと\wordef{inference}{推論}{すいろん}%
+と呼ばれる手続きを定め,\, それらに従って物事を考えることである.
+
+ここで
+\newpage
+\section{素朴集合論}
+\subsection{集合に関する素朴な定義}
+数学的対象の集まりを\wordef{set}{集合}{しゅうごう}
+\footnote{ここで\ruby{抽象}{ちゅうしょう}的な説明にとどめているのは,%
+\, 数学的に「厳密な」定義は\ruby{些}{いささ}か難しすぎるからである.
+このpdfでは,\, 後々より正確な定義に触れる}といい,\, 
+集合に含まれる数学的対象をその集合の
+\wordef{element}{元}{げん}という.
+\begin{shadebox}
+    $x$が集合$X$の元であるとき,\, 記号$\in$を用いて次のように表す.
+    \begin{align}
+        x\in X
+    \end{align}
+    \begin{boxnote}
+    あるいは,\, 集合$X$が$x$を元にもつとき,\, 記号$\ni$を用いて次のように表すこともある.
+    \begin{align}
+        X\ni x
+    \end{align}
+    \end{boxnote}
+\end{shadebox}
+集合を表すためには二つの書き方がある.\, 一つは中身を全て表す方法であり,\, %
+もう片方は「その元が満たす性質を書く」という方法である.
+具体的にやっていこう
+\emptyline
+\begin{itembox}[l]{集合の書き方(中身をすべて表す方法)}
+    1.\,$x$を元に持つ集合
+    \begin{align}
+        \{x\}
+    \end{align}
+
+    2.\, $x,\, y$を元に持つ集合
+    \begin{align}
+        \{x,\, y\}
+    \end{align}
+    これは,次のように表しても同じことである
+    \begin{align}
+        \{y,\, x\}
+    \end{align}
+\end{itembox}
+上記の例からもわかるように,\, 複数の元を持つ集合は,\, その元に\ruby{順序}{じゅんじょ}
+\footnote{この順序という概念自体も後々定められること
+であるが,\, 直感的には読者\ruby{諸氏}{しょし}は把握していると思われるので,\, 
+\ruby{便宜}{べんぎ}上ここでこの\ruby{語彙}{ごい}を用いさせてもらう.}
+の区別を持たない.
+\newpage
+\begin{itembox}[l]{集合の書き方(中身が満たす性質を表す方法)}
+    $P$は$x$を代入したときのみに真となり,$Q$は$x,\, y$を代入したときにのみ真となる式とする.
+
+
+    1.\,$x$を元に持つ集合
+    \begin{align}
+        \{a|P(a)\}
+    \end{align}
+
+    2.\,$x,y$を元に持つ集合
+    \begin{align}
+        \{a|Q(a)\}
+    \end{align}
+\end{itembox}
+
+集合の元は互いに区別ができない場合,\, その元はただ一つ含まれていると考える\footnote{そもそも,\, 
+この一つという概念自体,\, 次の自然数の項で定義されることであるが,\, 
+さすがに直感的には読者諸氏も知っていることであろうと思われるので,\, 便宜上こう説明する.}.
+\begin{align}
+    X = \{x,\, x\} \Rightarrow X = \{x\}
+\end{align}
+集合$Y$に含まれる元が全て集合$X$に含まれている場合,\, 集合$Y$は集合$X$の
+\wordef{subset}{部分集合}{ぶぶんしゅうごう}であるといい,\, 
+記号$\subset$を用いて次のように表す.
+\begin{align}
+    Y \subset X
+\end{align}
+また,\, これは$X$は$Y$の\wordef{superset}{上位集合}{じょういしゅうごう}であるといい,\, 記号$\supset$を用いて
+\begin{align}
+    X \supset Y
+\end{align}
+と表す.
+\newpage
+\subsection{集合に対する演算}
+集合同士には\ruby{演算}{えんざん}と呼ばれる操作をいくつか考えることができる.
+\subsubsection{非交和}
+互いにどの元も共有していないような集合$X,\, Y$について,\, それぞれに含まれる元を全て含むような
+集合$Z$を与えることを$X,\, Y$の\wordef{dunion}{非交和}{ひこうわ}
+\footnote{非交和を\ruby{直和}{ちょくわ}という操作の意味で用いる場合もあるが,\, 今回はその意味では用いない.}
+をとる,\, といい,\, 記号$\sqcup$を用いて次のように表す.
+\begin{align}
+    X \sqcup Y = Z
+\end{align}
+\emptyline
+\subsubsection{和}
+集合$X,\, Y$について,\, それぞれに含まれる元をすべて含むような集合$Z$を与えることを
+$X,\, Y$の和をとる,\, またはそのような$Z$を$X,\, Y$の\wordef{union}{和集合}{わしゅうごう}
+\footnote{\ruby{合併}{がっぺい}\, とも}
+である,\, といい,\, 記号$\cup$を用いて次のように表す.
+\footnote{このことから明らかなように,\, 非交和が定義されている集合の組$X,\, Y$について,\, 
+それらの和はそれらの非交和に一致する.}
+\begin{align}
+    X \cup Y = Z
+\end{align}
+\subsubsection{積}
+集合$X,\, Y$について,\, 両方ともに含まれる元をすべて含む集合$Z$を与えることを
+$X,\, Y$の積をとる\footnote{交叉をとる\, とも},\, またはそのような$Z$を$X,\, Y$%
+の\wordef{intersection}{交叉}{こうさ}
+\footnote{共通部分\, とも}
+である,\, といい,\, 記号$\cap$を用いて次のように表す
+\begin{align}
+    X \cap Y =Z
+\end{align}
+\newpage
+\subsubsection*{計算練習A}
+さて,\, この項目ではここまでに教えた集合の性質と演算を踏まえて,\, 実際にいくつかの集合について計算してみよう
+
+\begin{multicols}{2}
+    \noindent
+    \fbox{A} 次の集合同士が等しいかどうか答えよ\\
+    (a):$$\{A\}\text{と}\{A,A\}$$
+    \noindent
+    (b):$$\{\{\}\}\text{と}\{\}$$
+    \noindent
+    (c):$$\{A,B,C\}\text{と}\{B,A,C\}$$
+    \noindent
+    (d):$$\{A,B,B,C\}\text{と}\{C,C,A,B\}$$
+\end{multicols}
+\newpage
+\subsubsection{差}
+\subsubsection{冪}
+\newpage
+\section{多項式}
+\newpage
+\part{数学基礎論}
+\section{述語論理}
+\newpage
+\subsection{一階述語論理}
+\newpage
+\subsection{高階述語論理}
+\newpage
+\section{公理的集合論}
+\newpage
+\subsection{Zermelo-Fraenkel集合論}
+\newpage
+\subsection{選択公理}
+\newpage
+\subsection{ZFC以外の公理的集合論}
+\newpage
+\section{自然数}
+\subsection{自然数集合}
+次のように定められる集合$\mathbb{N}$を\wordeff{自然数集合}{しぜんすうしゅうごう}という.
+\begin{itembox}[l]{自然数集合の定義}
+\begin{align}
+    \{\}\in\mathbb{N}\\
+    x\in\mathbb{N}\Rightarrow x\cup\{x\}\in\mathbb{N}
+\end{align}
+\end{itembox}
+
+ここで,\, $\mathbb{N}$の各元を\wordef{natural}{自然数}{しぜんすう}と呼ぶ.
+\subsection{自然数の大小関係}
+自然数について大小関係を次のように定める.
+\begin{align}
+    x\in y\Rightarrow x < y
+\end{align}
+\subsection{数学的帰納法の原理}
+自然数について,\, 次の原理を認めることとする
+\begin{align}
+    (P(\{\}) \land P(x)\Rightarrow P(x\cup\{x\}))\Rightarrow\forall y [y\in\mathbb{N}\Rightarrow P(y)]
+\end{align}
+\subsection{有限集合}
+ここで,\, この自然数を用いて
+\subsection{自然数の演算}
+\subsubsection{後者関数}
+自然数について、後者関数$suc$を次のように定める。
+\begin{align}
+    suc(n) = n\cup\{n\}
+\end{align}
+\subsubsection{自然数の和}
+自然数について,\, 和は次のように定められる
+
+\begin{align}
+    x + 0 = x\\
+    x + suc(y) = suc(x) + y
+\end{align}
+
+また,\, 自然数について積は次のように定められる
+\begin{align}
+    x\times y = \sum_{z\in y} x
+\end{align}
+ここで,\, 記号$\sum$は次のように定められているものとする\footnote{少し踏み入った話をすると,\, %
+ここでの定義は有限集合の場合である.
+無限集合の場合や,\, ほかの表示方法もあるが,\, それらはここでは説明しない.}
+\begin{align}
+    \sum_{i\in \{\}} f(i) = \{\}\\
+    \sum_{i\in X\cup\{x\}} f(i) =\left(\sum_{i \in X} f(i)\right) + f(x)
+\end{align}
+\subsection{自然数の表現}
+\subsubsection{二進法}
+自然数の表現の一つ\footnote{一般には2進法と呼ばれるもの}を記号$0,\, 1$%
+を用いて次のように\ruby{再帰的}{さいきてき}に定義する.
+\begin{shadebox}
+    \begin{align}
+        \{\} = 0\\
+        |\mathfrak{P}(n)| = 1{\underbrace{0...0}_{n}}\\
+        k = |\mathfrak{P}(n)| + |\mathfrak{P}(m)| + l (n>m,|\mathfrak{m}|>l)%
+        \Rightarrow k = 1{\underbrace{0...0}_{n-m-1}}1{\underbrace{0...0}_{n-m-1}}
+    \end{align}
+\end{shadebox}
+\newpage
+\section{順序数}
+\newpage
+\part{数体系}
+\section{有理数}
+\newpage
+\section{代数的数}
+\newpage
+\section{実数}
+\newpage
+\section{多元数}
+\subsection{複素数}
+\newpage
+\section{テンソル}
+\newpage
+\section{P進数}
+\newpage
+\part{解析学}
+\section{極限}
+\newpage
+\section{微分積分}
+\newpage
+\part{幾何学}
+\section{Euclid幾何学}
+\part{巻末付録}
+\section{数学用語と英語名}
+\begin{multicols*}{3}
+\noindent
+\hypertarget{axiom}{公理}:axiom\\
+\hypertarget{inference}{推論}:inference\\
+\hypertarget{set}{集合}:set\\
+\hypertarget{member}{元}:element\footnote{memberとも}\\
+\hypertarget{subset}{部分集合}:subset\\
+\hypertarget{superset}{上位集合}:superset\\
+\hypertarget{dunion}{非交和}:disjoint union\\
+\hypertarget{union}{和集合}:union\\
+\hypertarget{intersection}{交叉}:intersection\footnote{meetとも}\\
+\hypertarget{natural}{自然数}:natural number\\
+\end{multicols*}
+\newpage
+\section{数学記号のLaTeX上のコマンド}
+\newpage
+\phantomsection \addcontentsline{toc}{section}{索引}
+\printindex
+\end{document}
