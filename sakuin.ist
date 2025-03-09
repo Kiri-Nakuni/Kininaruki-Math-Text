@@ -1,0 +1,25 @@
+preamble
+"\n\\begin{theindex}\n"
+postamble
+"\n\n \\end{theindex}\n"
+item_0   "\n\\item "
+item_1   "\n \\subitem -- "
+item_2   "\n  \\subsubitem --,"
+delim_0   "\\dotfill "
+delim_1   "\\dotfill "
+delim_2   "\\dotfill "
+
+
+lethead_prefix
+"\\hbox to \\linewidth{\\hfill\\sffamily\\bfseries\\gtfamily\\small "
+lethead_suffix
+"\\hfill}\\par\n\\nopagebreak\n"
+lethead_flag       1
+symbol             "記号/数字"
+letter_head        2
+
+heading_prefix
+"{\\vbox{\\hbox to \\linewidth{\\hfill \\rule[0.5ex]{1.2cm}{0.5pt} \\hspace{1pt} {\\sffamily\\bfseries\\small "
+heading_suffix
+"}\\ \\hspace{1pt} \\rule[0.5ex]{1.2cm}{0.5pt} \\hfill}\\vskip1pt}}\\nopagebreak\n"
+headings_flag      1
