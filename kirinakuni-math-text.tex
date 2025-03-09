@@ -260,10 +260,10 @@ $X,\, Y$の積をとる\footnote{交叉をとる\, とも},\, またはそのよ
 \begin{align}
     a_{0}, a_{1}, a_{2}, a_{3}, \cdots, a_{n}, \cdots
 \end{align}
-これは$\mathbb{R}$の可算無限個の直積$\prod_{n\in \mathbb{N}}\mathbb{R}$の元を一つ指定しているに他ならない.
+これは$\mathbb{R}$の可算無限個の直積$\displaystyle \prod_{n\in \mathbb{N}}\mathbb{R}$の元を一つ指定しているに他ならない.
 したがって，(実)数列を以下のように定義する.
 \begin{shadebox}
-    自然数集合$\mathbb{N}$から実数集合$\mathbb{R}$への写像$a:\mathbb{N} \to \mathbb{R}$を\wordef{real_seq}{(実)数列}{(じつ)すうれつ}と呼ぶ.\\
+    自然数集合$\mathbb{N}$から実数集合$\mathbb{R}$への写像$a:\mathbb{N} \to \mathbb{R}$を\index{じつすうれつ@実数列}\wordef{real_seq}{(実)数列}{(じつ)すうれつ}と呼ぶ.\\
     この写像の$n\in \mathbb{N}$の像$a(n)$をこの数列の第$n$項と呼び,\, $a_{n}$とかく.\\
     数列を$(a_{n})_{n\in \mathbb{N}}$あるいは単に$(a_{n})$とかく.
 \end{shadebox}
@@ -303,14 +303,93 @@ $X,\, Y$の積をとる\footnote{交叉をとる\, とも},\, またはそのよ
         となる.
     \end{boxnote}
 \end{shadebox}
-極限は十分大きい$n$によるので,\, 有限個の項が異なることは極限に影響を与えないだろう.
+数列の極限は十分大きい$n$によるので,\, 有限個の項が異なることは極限に影響を与えないだろう.
+実際にこれが成り立つことを示そう.
+
+実数列$(a_{n})_{n\in \mathbb{N}}$をとる.数列$(a_{n})_{n\in \mathbb{N}}$と有限個の項が異なる実数列$(b_{n})_{n\in \mathbb{N}}$をとる.このとき
+\begin{center}
+    $a_{n} \to a\ (n\to \infty)$ならば$b_{n} \to a\ (n\to \infty)$
+\end{center}
+が成り立つ.\\
+
+項が異なるのは有限個であるから,\, ある自然数$n_{1}$があって,\, 任意の自然数$n\geq n_{1}$に対して
+\begin{align*}
+    a_{n} = b_{n}
+\end{align*}
+である.また，$a_{n} \to a\ (n\to \infty)$より,\, 任意の正数$\varepsilon > 0$に対して,\, ある自然数$n_{2}$があって,\, 任意の自然数$n\geq n_{2}$に対して$|a_{n} - a| < \varepsilon$が成り立つ.\\
+$n_{0} = \max\{n_{1},n_{2}\}$とおくと,\, 任意の自然数$n\geq n_{0}$に対して
+\begin{align*}
+    |b_{n} - a| = |a_{n} - a| < \varepsilon
+\end{align*}
+が成り立つので,\, $b_{n} \to a\ (n\to \infty)$である.\\
+
 
 \begin{itembox}[l]{極限の例}
     \begin{align}
         \lim_{n\to \infty}\frac{1}{n} = 0
     \end{align}
 \end{itembox}
-しょーめー.
+つまり,
+\begin{align*}
+    \forall \varepsilon > 0\ \exists n_{0}\in \mathbb{N}\ \forall n \in \mathbb{N}\ \left( n\geq n_{0} \Rightarrow \left|\frac{1}{n} \right| = \frac{1}{n} < \varepsilon \right)
+\end{align*}
+を示せば良い.正数$\varepsilon > 0$に対して自然数$n_{0}$を
+\begin{align*}
+    n_{0} > \frac{1}{\varepsilon}
+\end{align*}
+となるようにとる(アルキメデスの原理によってこのような$n_{0}$は存在する)
+すると,\, 任意の自然数$n\geq n_{0}$に対して
+\begin{align*}
+    \frac{1}{n} \leq \frac{1}{n_{0}} < \varepsilon
+\end{align*}
+が成り立つので,\, $\displaystyle \lim_{n\to \infty}\frac{1}{n} = 0$である.\\
+
+数列$(a_{n})_{n\in \mathbb{N}}$の極限は存在すれば一意である.\\
+いま,\, $a_{n} \to a\ (n\to \infty)$かつ$a_{n} \to b\ (n\to \infty)$とする.このとき,\, 任意の正数$\varepsilon > 0$に対して,\, ある自然数$n_{1},n_{2}$があって,\, 任意の自然数$n\geq n_{1},n_{2}$に対して
+\begin{align*}
+    |a_{n} - a| < \varepsilon\\
+    |a_{n} - b| < \varepsilon
+\end{align*}
+が成り立つ.このとき,\, 任意の自然数$n\geq \max\{n_{1},n_{2}\}$に対して
+\begin{align*}
+    |a - b| = |(a - a_{n}) + (a_{n} - b)|\leq |a - a_{n}| + |a_{n} - b| < 2\varepsilon
+\end{align*}
+が成り立つので,\, $|a - b| = 0$である.したがって,\, $a = b$である.\\
+
+\begin{shadebox}
+    数列$(a_{n})_{n\in \mathbb{N}}$が上に有界であるとは,\, ある実数$M$があって,\, 任意の自然数$n$に対して
+    \begin{align}
+        a_{n} \leq M
+    \end{align}
+    が成り立つことである.\\
+    数列$(a_{n})_{n\in \mathbb{N}}$が下に有界であるとは,\, ある実数$m$があって,\, 任意の自然数$n$に対して
+    \begin{align}
+        m \leq a_{n}
+    \end{align}
+    が成り立つことである.\\
+    数列$(a_{n})_{n\in \mathbb{N}}$が有界であるとは,\, 上に有界かつ下に有界であることである.
+    \begin{boxnote}
+        数列$(a_{n})_{n\in \mathbb{N}}$が上(下)に有界あるいは有界とは,\, 言い換えれば集合
+        \begin{align*}
+            \{a_{n} \mid n\in \mathbb{N}\}
+        \end{align*}
+        が上(下)に有界あるいは有界であることである.
+    \end{boxnote}
+\end{shadebox}
+収束する数列は有界である.\\
+数列$(a_{n})_{n\in \mathbb{N}}$が収束するとする.その極限を$a$とすれば,\, ある自然数$n_{0}$があって,\, 任意の自然数$n\geq n_{0}$に対して
+\begin{align*}
+    |a_{n} - a| < 1
+\end{align*}
+が成り立つようできる.このとき,\, 任意の自然数$n\geq n_{0}$に対して
+\begin{align*}
+    |a_{n}| = |a_{n} - a + a| \leq |a_{n} - a| + |a| < 1 + |a|
+\end{align*}
+が成り立つので,\, $M = \max\{|a_{0}|,|a_{1}|,\cdots,|a_{n_{0}}|,1 + |a|\}$とおくと,\, 任意の自然数$n$に対して
+\begin{align*}
+    |a_{n}| \leq M
+\end{align*}
+が成り立つので,\, 数列$(a_{n})_{n\in \mathbb{N}}$は有界である.\\
 
 
 
