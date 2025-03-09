@@ -282,6 +282,40 @@ $X,\, Y$の積をとる\footnote{交叉をとる\, とも},\, またはそのよ
     \end{align}
 \end{shadebox}
 
+\begin{shadebox}
+    実数列$(a_{n})_{n\in \mathbb{N}}$が実数$a$に\wordef{converge}{収束}{しゅうそく}するとは,\, 任意の\ruby{正数}{せいすう}$\varepsilon > 0$に対して,\, 
+    ある自然数$n_{0}$が存在して,\, $n\geq n_{0}$なる任意の自然数$n$に対して,\, 
+    $|a_{n} - a| < \varepsilon$が成り立つときをいう.\\
+    このとき,\, 実数$a$を数列$(a_{n})_{n\in \mathbb{N}}$の\wordef{limit}{極限}{きょくげん}といい,\,
+    \begin{align}
+        \lim_{n\to \infty}a_{n} = a
+    \end{align}
+    あるいは,
+    \begin{align}
+        a_{n}\to a\ (n\to \infty)
+    \end{align}
+    とかく.数列が収束しない場合,\, \wordef{diverge}{発散}{はっさん}するという.
+    \begin{boxnote}
+        実数列$(a_{n})_{n\in \mathbb{N}}$が実数$a$に収束するというのは形式化すれば
+        \begin{align}
+            \forall \varepsilon > 0\ \exists n_{0}\in \mathbb{N}\ \forall n\in \mathbb{N}\ (n\geq n_{0}\Rightarrow |a_{n} - a| < \varepsilon)
+        \end{align}
+        となる.
+    \end{boxnote}
+\end{shadebox}
+極限は十分大きい$n$によるので,\, 有限個の項が異なることは極限に影響を与えないだろう.
+
+\begin{itembox}[l]{極限の例}
+    \begin{align}
+        \lim_{n\to \infty}\frac{1}{n} = 0
+    \end{align}
+\end{itembox}
+しょーめー.
+
+
+
+
+
 
 
 
