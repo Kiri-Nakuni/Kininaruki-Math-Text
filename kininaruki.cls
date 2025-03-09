@@ -98,12 +98,7 @@
 
 %化学分野
 \RequirePackage[version=4]{mhchem}%化学式を簡単に書けるようにするものです.
-\RequirePackage{xymtex}%構造式を比較的簡単に描けるやつ.後述のchemfigよりも簡便な構文で描画することができます.
 \RequirePackage{chemfig}%構造式を自由に描くためのパッケージです.些か難易度が高いですが,シクロアワオドリンの様な複雑な分子でも描画することができます.
-\ifxetex
-  \save{xe}{Gamma,Delta,Theta,Lambda,Xi,Pi,Sigma,Upsilon,Phi,Psi,Omega}
-  \save{}{Gamma,Delta,Theta,Lambda,Xi,Pi,Sigma,Upsilon,Phi,Psi,Omega}%xeCJKとXyMTeXのコマンド名被りを解決しています.
-\fi
 \usetikzlibrary{intersections, calc, arrows.meta,angles,quotes,math}%TikZで呼び出す機能です.
 \usephysicsmodule{ab,braket,xmat}%physics2で呼び出す機能です.
 \newcommand{\TeXfont}[1]{{\usefont{T1}{cmr}{m}{n} #1}}
