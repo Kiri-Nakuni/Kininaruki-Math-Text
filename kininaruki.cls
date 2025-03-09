@@ -123,10 +123,10 @@
 \newcommand{\eleven}{\TeXfont{X\@mI}}
 \newcommand{\twelve}{\TeXfont{X\@mI\@mI}}
 \newcommand{\wordef}[3]{%
-    \hyperlink{#1}{\ruby{{\textcolor{blue}{#2}}}{#3}}
+    \index{#3@#2}\hyperlink{#1}{\ruby{{\textcolor{blue}{#2}}}{#3}}
 }
 \newcommand{\wordeff}[2]{%
-    {\ruby{{\textcolor{blue}{#1}}}{#2}}
+    \index{#2@#1}{\ruby{{\textcolor{blue}{#1}}}{#2}}
 }
 \newcommand{\setjapanesemainfont}[1]{%
     \ifxetex
