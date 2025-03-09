@@ -13,6 +13,7 @@
 .vscode
 bxokumacj.def
 bxokumacro.sty
+*.pdf
 kirinakuni-math-text.log
 kirinakuni-math-text.synctex.gz
 kirinakuni-math-text.xdv
