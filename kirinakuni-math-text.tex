@@ -254,6 +254,37 @@ $X,\, Y$の積をとる\footnote{交叉をとる\, とも},\, またはそのよ
 \newpage
 \part{解析学}
 \section{極限}
+以前のセクションにおいて書かれているかもしれないが,\, ここでは(実)\ruby{数列}{すうれつ}の定義から始める.
+\subsection{数列}
+素朴には(実)数列とは,\, 以下のように実数を一列に並べたものであろう.
+\begin{align}
+    a_{0}, a_{1}, a_{2}, a_{3}, \cdots, a_{n}, \cdots
+\end{align}
+これは$\mathbb{R}$の可算無限個の直積$\prod_{n\in \mathbb{N}}\mathbb{R}$の元を一つ指定しているに他ならない.
+したがって，(実)数列を以下のように定義する.
+\begin{shadebox}
+    自然数集合$\mathbb{N}$から実数集合$\mathbb{R}$への写像$a:\mathbb{N} \to \mathbb{R}$を\wordef{real_seq}{(実)数列}{(じつ)すうれつ}と呼ぶ.\\
+    この写像の$n\in \mathbb{N}$の像$a(n)$をこの数列の第$n$項と呼び,\, $a_{n}$とかく.\\
+    数列を$(a_{n})_{n\in \mathbb{N}}$あるいは単に$(a_{n})$とかく.
+\end{shadebox}
+
+\begin{itembox}[l]{数列の例}
+    1.\, $a_{n} = n$\\
+    2.\, $b_{n} = \frac{1}{n}$\\
+    3.\, $c_{n} = (-1)^{n}$\\
+    4.\, $d_{n} = $円周率$\pi$の少数第$n$桁目.つまり$d_{0} = 3,d_{1} = 1,d_{2} = 4,\cdots$
+\end{itembox}
+続いて,\, 絶対値の定義を復習する.
+\begin{shadebox}
+    実数$x$に対して,\, その絶対値$|x|$を次のように定義する.
+    \begin{align}
+        |x| = \max\{x,-x\}
+    \end{align}
+\end{shadebox}
+
+
+
+
 \newpage
 \section{微分積分}
 \newpage
@@ -273,6 +304,7 @@ $X,\, Y$の積をとる\footnote{交叉をとる\, とも},\, またはそのよ
 \hypertarget{union}{和集合}:union\\
 \hypertarget{intersection}{交叉}:intersection\footnote{meetとも}\\
 \hypertarget{natural}{自然数}:natural number\\
+\hypertarget{real_seq}{(実)数列}:real sequence\\
 \end{multicols*}
 \newpage
 \section{数学記号のLaTeX上のコマンド}
