@@ -2,6 +2,9 @@
 %%このバージョンはまったり数学部屋での利用を目的としています
 %%また,非常にコメントアウトが多いですが,これは初心者が見ても理解自体はできることを企図しています.
 %%
+%%このクラスファイルに於いて新規に定義されている命令について本著作者は一切権利を主張しない.
+%%また,クラスファイルのコメントアウトについても同様である.
+%%内部的に利用されている各種のファイルは一切の変更をしておらず,またライセンスについてもそれらのものを継承する.
 \NeedsTeXFormat{LaTeX2e}
 %\NeedsTeXFormatは使える条件のようなものです.
 %今回はLaTeX2eとありますが,ほかにもpLaTeX2eなどが指定されている場合もあります.
@@ -244,5 +247,13 @@
         \fi
     \fi
 \fi
+\tcbuselibrary{breakable, skins, theorems}
 \newcommand{\setfonts}{\setalphabetmainfont{Segoe UI}\setalphabetsansfont{Arial Black}%
 \setjapanesemainfont{IPAMincho}\setjapanesesansfont{MS Gothic}}
+\newtcolorbox{practice}[2][]{colframe=blue!80!yellow,colback=blue!3!,coltitle=white,title={#2},#1}
+\newtcbtheorem{theoremA}{Theorem}{
+    coltitle = black,
+    colback = green!5,
+    colframe = green!35!black!60!yellow,
+    breakable = true,
+}{theoremA}

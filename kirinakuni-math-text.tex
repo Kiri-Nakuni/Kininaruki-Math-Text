@@ -27,10 +27,28 @@
 \section{命題論理}
 \subsection{公理,推論,証明}
 数学とは,\, ほとんどの場合ある\wordef{axiom}{公理}{こうり}と呼ばれるものと\wordef{inference}{推論}{すいろん}%
-と呼ばれる手続きを定め,\, それらに従って物事を考えることである.
+と呼ばれる手続きを定め,\, それらに従って物事を考えることである.\footnote{以下,\, この節に於いては便宜上%
+排中律と呼ばれるものを暗黙に仮定している.}
 
-ここで
+ここで,\, 公理や推論される対象にはある書き方の決まりがあり,\,それに従って書かれたものを%
+\wordef{proposition}{命題}{めいだい}という.
+
+また,\,公理の集まり(と,\, 利用する推論の集まり)を\wordeff{公理系}{こうりけい}といい,\, %
+ある公理系を定めたとき,\, その公理系から推論される命題をその公理系上の\wordef{theorem}{定理}{ていり}といい,\, %
+その推論を,\,その定理の\wordef{proof}{証明}{しょうめい}という.
+
+公理系を定めたとき,\,公理系に含まれるすべての公理とそこから推論されるすべての定理を\wordeff{真な命題}{しんなめいだい}%
+と呼び,\, %
+その命題の\wordeff{否定命題}{ひていめいだい}が定理であるような命題を\wordeff{偽な命題}{ぎなめいだい}%
+という.\footnote{実は,ある公理系を定めたとき,\,ある命題が真であることと証明を持つことが%
+同値であることは明らかではない.しかし,G\"{o}delの完全性定理と呼ばれるものと健全性定理と呼ばれるものの存在から%
+少なくとも直感的である\ruby{範疇}{はんちゅう}(要するに,\, 一階述語の範囲)なら%
+この二つは同値であることは現代では知られており,\, %
+すくなくともこの節ではこれは自明なこととして扱う.
+}
 \newpage
+\subsection{命題論理の書き方}
+命題論理と呼ばれるものは,
 \section{素朴集合論}
 \subsection{集合に関する素朴な定義}
 数学的対象の集まりを\wordef{set}{集合}{しゅうごう}
@@ -142,10 +160,9 @@ $X,\, Y$の積をとる\footnote{交叉をとる\, とも},\, またはそのよ
 \newpage
 \subsubsection*{計算練習A}
 さて,\, この項目ではここまでに教えた集合の性質と演算を踏まえて,\, 実際にいくつかの集合について計算してみよう
-
+\begin{practice}{\fbox{A} 次の集合同士が等しいかどうか答えよ}
 \begin{multicols}{2}
     \noindent
-    \fbox{A} 次の集合同士が等しいかどうか答えよ\\
     (a):$$\{A\}\text{と}\{A,A\}$$
     \noindent
     (b):$$\{\{\}\}\text{と}\{\}$$
@@ -154,11 +171,17 @@ $X,\, Y$の積をとる\footnote{交叉をとる\, とも},\, またはそのよ
     \noindent
     (d):$$\{A,B,B,C\}\text{と}\{C,C,A,B\}$$
 \end{multicols}
+\end{practice}
 \newpage
 \subsubsection{差}
+\newpage
 \subsubsection{冪}
 \newpage
 \section{多項式}
+\newpage
+\section{写像}
+\subsection{順序対}
+ここでは,\, 集合の亜種である\wordef{ordpair}{順序対}{じゅんじょつい}を紹介していく
 \newpage
 \part{数学基礎論}
 \section{述語論理}
@@ -248,9 +271,24 @@ $X,\, Y$の積をとる\footnote{交叉をとる\, とも},\, またはそのよ
 \section{多元数}
 \subsection{複素数}
 \newpage
+\subsection{分解型複素数}
+\newpage
+\subsection{二重数}
+\newpage
+\subsection{その他の二元数}
+\newpage
+\subsection{四元数}
+\newpage
 \section{テンソル}
+\subsection{ベクトル}
+\newpage
+\subsection{行列}
 \newpage
 \section{P進数}
+\newpage
+\part{代数学}
+\newpage
+\section{群論}
 \newpage
 \part{解析学}
 \section{極限}
@@ -265,6 +303,9 @@ $X,\, Y$の積をとる\footnote{交叉をとる\, とも},\, またはそのよ
 \noindent
 \hypertarget{axiom}{公理}:axiom\\
 \hypertarget{inference}{推論}:inference\\
+\hypertarget{proposition}{命題}:proposition\\
+\hypertarget{theorem}{定理}:theorem\\
+\hypertarget{proof}{証明}:proof\\
 \hypertarget{set}{集合}:set\\
 \hypertarget{member}{元}:element\footnote{memberとも}\\
 \hypertarget{subset}{部分集合}:subset\\
@@ -272,7 +313,8 @@ $X,\, Y$の積をとる\footnote{交叉をとる\, とも},\, またはそのよ
 \hypertarget{dunion}{非交和}:disjoint union\\
 \hypertarget{union}{和集合}:union\\
 \hypertarget{intersection}{交叉}:intersection\footnote{meetとも}\\
-\hypertarget{natural}{自然数}:natural number\\
+\hypertarget{ordpair}{順序対}:ordered\, pair\\
+\hypertarget{natural}{自然数}:natural\, number\\
 \end{multicols*}
 \newpage
 \section{数学記号のLaTeX上のコマンド}
