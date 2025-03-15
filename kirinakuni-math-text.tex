@@ -312,8 +312,51 @@ $X,\, Y$の積をとる\footnote{交叉をとる\, とも},\, またはそのよ
 \section{P進数}
 \newpage
 \part{代数学}
-\newpage
+代数学においては,重視されるのは集合の元ではなくその間に定められた演算等の構造である.
+すなわちある演算に対して最小限の要請のみによって定義された概念を扱うのである.
+
+多くの対象への応用がなされている群論は物理化学における分子の構造決定にも関連がある.
+前半部分では制約が極端に少ないために応用が広く知られていない対象も存在するが,
+それらを踏まえてあとの概念を知ることでどのような構造が組み合わせられているのかが明らかになるだろう.
+% \newpage
 \section{群論}
+\subsection{群}
+\subsubsection{二項演算}
+主に以下のような条件を満たす\wordef{bioperation}{二項演算}{にこうえんざん}である.
+\begin{shadebox}
+	空でない集合$S$に対して,写像
+	\begin{align}
+		m:S\times{}S\longrightarrow{}S
+	\end{align}
+	が存在するとき,この写像$m$を集合$S$上の二項演算という.
+	\begin{boxnote}
+		$S$上の二項演算$m$の値を
+		\begin{align}
+			m(a, b) = a\cdot{}b = ab
+		\end{align}
+		などと書くことがある.
+	\end{boxnote}
+\end{shadebox}
+
+\begin{itembox}[l]{二項演算の例}
+	$\mathbb{N}$には通常の加法によって二項演算を定めることができるが,減法では差が自然数にならない場合があるため二項演算を定めることはできない.
+	\begin{align}
+		m:\mathbb{N}\times{}\mathbb{N}\longrightarrow{}\mathbb{N}; (a, b)\longmapsto{}a+b\\
+	\end{align}
+\end{itembox}
+
+
+
+
+
+
+
+
+
+
+
+
+
 \newpage
 \part{解析学}
 \section{極限}
@@ -340,6 +383,7 @@ $X,\, Y$の積をとる\footnote{交叉をとる\, とも},\, またはそのよ
 \hypertarget{intersection}{交叉}:intersection\footnote{meetとも}\\
 \hypertarget{ordpair}{順序対}:ordered\, pair\\
 \hypertarget{natural}{自然数}:natural\, number\\
+\hypertarget{bioperation}{二項演算}:binary\, operation\\
 \end{multicols*}
 \newpage
 \section{数学記号のLaTeX上のコマンド}
